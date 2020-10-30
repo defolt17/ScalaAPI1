@@ -2,6 +2,7 @@ import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 import akka.http.scaladsl.Http
 
+import scala.concurrent.Await
 import scala.util.{Failure, Success}
 
 object Main extends App {
@@ -21,8 +22,11 @@ object Main extends App {
     val binding = Http().bindAndHandle(route, host, port)
     binding.onComplete {
         case Success(_) => println("YES! YES! YES! \n NICE~E!")
-        case Failure(error) => println("NO! NO! NO! \n NICE~E!")
+        case Failure(error) => println(s"NO! NO! NO! \n ${error.getMessage}")
     }
+
+    import scala.concurrent.duration._
+    Await.result(binding, 3.seconds)
 
 
 }
