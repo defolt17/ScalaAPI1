@@ -1,7 +1,5 @@
-import Main.{host, port, system}
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.javadsl.ServerBinding
 import akka.stream.ActorMaterializer
 
 import scala.concurrent.{ExecutionContext, Future}

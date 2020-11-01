@@ -13,5 +13,5 @@ class InMemoryTodoRepository(initialTodos: Seq[Todo] = Seq.empty)(implicit ec: E
 
     override def done(): Future[Seq[Todo]] = Future.successful(todos.filter(_.done))
 
-    override def pending(): Future[Seq[Todo]] = Future.successful(todos.filter(_.done))
+    override def pending(): Future[Seq[Todo]] = Future.successful(todos.filter(!_.done))
 }
