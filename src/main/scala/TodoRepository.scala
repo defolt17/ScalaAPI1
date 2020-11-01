@@ -7,7 +7,7 @@ trait TodoRepository {
 }
 
 class InMemoryTodoRepository(initialTodos: Seq[Todo] = Seq.empty)(implicit ec: ExecutionContext) extends TodoRepository {
-    private var todos: Vector[Todo] = initialTodos.toVector
+    private val todos: Vector[Todo] = initialTodos.toVector
 
     override def all(): Future[Seq[Todo]] = Future.successful(todos)
 
